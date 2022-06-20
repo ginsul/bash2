@@ -1,0 +1,13 @@
+---
+- name: pb
+  hosts: sw
+  connection: network_cli
+  gather_facts: false
+  vars:
+    - ansible_python_interpreter: /usr/bin/python3.8
+
+  vars_files: 
+    - ../../group_vars/network/cisco-asr-1001.yml
+
+  roles:
+    - { role: provision/roles/network-cisco-asr-1001-deploy }
