@@ -11,7 +11,73 @@ Extended IP access list 199
 
 ferr
 
-
+speciallinebgp
+router bgp 132164
+ bgp router-id 103.6.117.247
+ no bgp enforce-first-as
+ bgp log-neighbor-changes
+ neighbor cymru-bogon peer-group
+ neighbor cymru-bogon description BGP Peering with CYMRU Bogon
+ neighbor cymru-bogon ebgp-multihop 255
+ neighbor ISAT_PRIMARY peer-group
+ neighbor ISAT_PRIMARY description ISAT Primary Link
+ neighbor ISAT_SECONDARY peer-group
+ neighbor ISAT_SECONDARY description ISAT Secondary Link
+ neighbor BIX peer-group
+ neighbor BIX remote-as 38060
+ neighbor BIX description BIX-PEER
+ neighbor GCP peer-group
+ neighbor GCP remote-as 65001
+ neighbor GCP timers 20 60 60
+ neighbor JKTIX peer-group
+ neighbor JKTIX remote-as 137295
+ neighbor JKTIX description JKTIX-PEER
+ neighbor FACEBOOK peer-group
+ neighbor FACEBOOK remote-as 32934
+ neighbor FACEBOOK description FACEBOOK
+ neighbor FACEBOOK ebgp-multihop 255
+ neighbor AMAZON peer-group
+ neighbor AMAZON remote-as 16509
+ neighbor AMAZON description AMAZON
+ neighbor AMAZON ebgp-multihop 255
+ neighbor JKTIX_IPV6 peer-group
+ neighbor JKTIX_IPV6 remote-as 137295
+ neighbor 2001:DF0:9E00::1321:64:EE remote-as 132164
+ neighbor 2001:DF0:9E00::1321:64:EE shutdown
+ neighbor 2001:DF0:9E00::1321:64:F6 remote-as 132164
+ neighbor 2001:DF0:9E00::1321:64:F6 update-source Loopback0
+ neighbor 2404:C8:0:A:0:13:7295:1 peer-group JKTIX_IPV6
+ neighbor 2404:C8:0:A:0:13:7295:2 peer-group JKTIX_IPV6
+ neighbor 2404:C000:4004::5:5818:1 remote-as 55818
+ neighbor 2404:C000:4004::5:5818:1 description MCIX_IPV6
+ neighbor 38.229.6.20 remote-as 65332
+ neighbor 38.229.6.20 peer-group cymru-bogon
+ neighbor 38.229.6.20 description Peering to CYMRU BGP
+ neighbor 38.229.6.20 update-source Loopback0
+ neighbor 38.229.46.20 remote-as 65332
+ neighbor 38.229.46.20 peer-group cymru-bogon
+ neighbor 38.229.46.20 description Peering to CYMRU BGP
+ neighbor 38.229.46.20 update-source Loopback0
+ neighbor 103.6.117.237 remote-as 132164
+ neighbor 103.6.117.237 update-source Loopback0
+ neighbor 103.6.117.238 remote-as 132164
+ neighbor 103.56.234.129 remote-as 131702
+ neighbor 103.56.234.129 description MORATEL-IX
+ neighbor 103.206.244.217 remote-as 131111
+ neighbor 103.206.244.217 description MORATEL
+ neighbor 119.11.184.23 peer-group FACEBOOK
+ neighbor 119.11.184.24 peer-group FACEBOOK
+ neighbor 119.11.184.88 peer-group AMAZON
+ neighbor 119.11.184.101 peer-group JKTIX
+ neighbor 119.11.184.102 peer-group JKTIX
+ neighbor 119.110.117.1 remote-as 55818
+ neighbor 119.110.117.1 description MCIX
+ neighbor 169.254.0.13 peer-group GCP
+ neighbor 172.25.30.6 remote-as 132164
+ neighbor 218.100.41.100 peer-group BIX
+ neighbor 218.100.41.101 peer-group BIX
+ !
+endspeciallinebgp
 
 
 
