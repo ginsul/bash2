@@ -1,19 +1,25 @@
+route_maps_module:
+
 route-map ini permit 124
  match as-path 31
 
+route_maps_module
+
 interface
 
-module_acls
+acls_module:
+
 Extended IP access list 199
     10 permit ip 103.6.117.0 0.0.0.255 any
     20 permit ip 103.50.216.0 0.0.0.255 any
     30 permit ip 103.50.217.0 0.0.0.255 any
     40 deny ip any any
-module_acls
+acls_module
 
 ferr
 
 bgp_global_module:
+
 router bgp 132164
  bgp router-id 103.6.117.247
  no bgp enforce-first-as
