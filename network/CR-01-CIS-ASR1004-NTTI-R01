@@ -11,7 +11,7 @@ Extended IP access list 199
 
 ferr
 
-=
+speciallinebgp
 router bgp 132164
  address-family ipv4
   network 103.6.117.0 mask 255.255.255.0
@@ -111,6 +111,7 @@ router bgp 132164
   neighbor 218.100.41.101 activate
  exit-address-family
  !
+speciallinebgp
 =
 ==
 router bgp 132164
