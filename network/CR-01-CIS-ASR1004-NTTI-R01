@@ -3,15 +3,17 @@ route-map ini permit 124
 
 interface
 
+module_acls
 Extended IP access list 199
     10 permit ip 103.6.117.0 0.0.0.255 any
     20 permit ip 103.50.216.0 0.0.0.255 any
     30 permit ip 103.50.217.0 0.0.0.255 any
     40 deny ip any any
+module_acls
 
 ferr
 
-speciallinebgp
+bgp_global_module:
 router bgp 132164
  bgp router-id 103.6.117.247
  no bgp enforce-first-as
@@ -77,7 +79,7 @@ router bgp 132164
  neighbor 218.100.41.100 peer-group BIX
  neighbor 218.100.41.101 peer-group BIX
  !
-endspeciallinebgp
+bgp_global_module
 
 
 
