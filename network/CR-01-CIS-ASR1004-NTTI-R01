@@ -32,7 +32,6 @@ router bgp 132164
  neighbor BIX description BIX-PEER
  neighbor GCP peer-group
  neighbor GCP remote-as 65001
- neighbor GCP timers 20 60 60
  neighbor JKTIX peer-group
  neighbor JKTIX remote-as 137295
  neighbor JKTIX description JKTIX-PEER
