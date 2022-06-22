@@ -50,14 +50,6 @@ router bgp 132164
  neighbor AMAZON ebgp-multihop 255
  neighbor JKTIX_IPV6 peer-group
  neighbor JKTIX_IPV6 remote-as 137295
- neighbor 2001:DF0:9E00::1321:64:EE remote-as 132164
- neighbor 2001:DF0:9E00::1321:64:EE shutdown
- neighbor 2001:DF0:9E00::1321:64:F6 remote-as 132164
- neighbor 2001:DF0:9E00::1321:64:F6 update-source Loopback0
- neighbor 2404:C8:0:A:0:13:7295:1 peer-group JKTIX_IPV6
- neighbor 2404:C8:0:A:0:13:7295:2 peer-group JKTIX_IPV6
- neighbor 2404:C000:4004::5:5818:1 remote-as 55818
- neighbor 2404:C000:4004::5:5818:1 description MCIX_IPV6
  neighbor 38.229.6.20 remote-as 65332
  neighbor 38.229.6.20 peer-group cymru-bogon
  neighbor 38.229.6.20 description Peering to CYMRU BGP
