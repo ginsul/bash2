@@ -1,12 +1,238 @@
+route_maps_module:
+
 route-map ini permit 124
  match as-path 31
 
+route_maps_module
+
 interface
 
-Extended IP access list 197
+acls_module:
+
+Extended IP access list 199
     10 permit ip 103.6.117.0 0.0.0.255 any
     20 permit ip 103.50.216.0 0.0.0.255 any
     30 permit ip 103.50.217.0 0.0.0.255 any
     40 deny ip any any
+acls_module
 
 ferr
+
+bgp_global_module:
+
+router bgp 132164
+ bgp router-id 103.6.117.247
+ no bgp enforce-first-as
+ bgp log-neighbor-changes
+ neighbor cymru-bogon peer-group
+ neighbor cymru-bogon description BGP Peering with CYMRU Bogon
+ neighbor cymru-bogon ebgp-multihop 255
+ neighbor ISAT_PRIMARY peer-group
+ neighbor ISAT_PRIMARY description ISAT Primary Link
+ neighbor ISAT_SECONDARY peer-group
+ neighbor ISAT_SECONDARY description ISAT Secondary Link
+ neighbor BIX peer-group
+ neighbor BIX remote-as 38060
+ neighbor BIX description BIX-PEER
+ neighbor GCP peer-group
+ neighbor GCP remote-as 65001
+ neighbor GCP timers 20 60 60
+ neighbor JKTIX peer-group
+ neighbor JKTIX remote-as 137295
+ neighbor JKTIX description JKTIX-PEER
+ neighbor FACEBOOK peer-group
+ neighbor FACEBOOK remote-as 32934
+ neighbor FACEBOOK description FACEBOOK
+ neighbor FACEBOOK ebgp-multihop 255
+ neighbor AMAZON peer-group
+ neighbor AMAZON remote-as 16509
+ neighbor AMAZON description AMAZON
+ neighbor AMAZON ebgp-multihop 255
+ neighbor JKTIX_IPV6 peer-group
+ neighbor JKTIX_IPV6 remote-as 137295
+ neighbor 38.229.6.20 remote-as 65332
+ neighbor 38.229.6.20 peer-group cymru-bogon
+ neighbor 38.229.6.20 description Peering to CYMRU BGP
+ neighbor 38.229.6.20 update-source Loopback0
+ neighbor 38.229.46.20 remote-as 65332
+ neighbor 38.229.46.20 peer-group cymru-bogon
+ neighbor 38.229.46.20 description Peering to CYMRU BGP
+ neighbor 38.229.46.20 update-source Loopback0
+ neighbor 103.6.117.237 remote-as 132164
+ neighbor 103.6.117.237 update-source Loopback0
+ neighbor 103.6.117.238 remote-as 132164
+ neighbor 103.56.234.129 remote-as 131702
+ neighbor 103.56.234.129 description MORATEL-IX
+ neighbor 103.206.244.217 remote-as 131111
+ neighbor 103.206.244.217 description MORATEL
+ neighbor 119.11.184.23 peer-group FACEBOOK
+ neighbor 119.11.184.24 peer-group FACEBOOK
+ neighbor 119.11.184.88 peer-group AMAZON
+ neighbor 119.11.184.101 peer-group JKTIX
+ neighbor 119.11.184.102 peer-group JKTIX
+ neighbor 119.110.117.1 remote-as 55818
+ neighbor 119.110.117.1 description MCIX
+ neighbor 169.254.0.13 peer-group GCP
+ neighbor 172.25.30.6 remote-as 132164
+ neighbor 218.100.41.100 peer-group BIX
+ neighbor 218.100.41.101 peer-group BIX
+ !
+bgp_global_module
+
+bgp_address_family_module:
+router bgp 132164
+ bgp router-id 103.6.117.247
+ no bgp enforce-first-as
+ bgp log-neighbor-changes
+ neighbor cymru-bogon peer-group
+ neighbor cymru-bogon description BGP Peering with CYMRU Bogon
+ neighbor cymru-bogon ebgp-multihop 255
+ neighbor ISAT_PRIMARY peer-group
+ neighbor ISAT_PRIMARY description ISAT Primary Link
+ neighbor ISAT_SECONDARY peer-group
+ neighbor ISAT_SECONDARY description ISAT Secondary Link
+ neighbor BIX peer-group
+ neighbor BIX remote-as 38060
+ neighbor BIX description BIX-PEER
+ neighbor GCP peer-group
+ neighbor GCP remote-as 65001
+ neighbor GCP timers 20 60 60
+ neighbor JKTIX peer-group
+ neighbor JKTIX remote-as 137295
+ neighbor JKTIX description JKTIX-PEER
+ neighbor FACEBOOK peer-group
+ neighbor FACEBOOK remote-as 32934
+ neighbor FACEBOOK description FACEBOOK
+ neighbor FACEBOOK ebgp-multihop 255
+ neighbor AMAZON peer-group
+ neighbor AMAZON remote-as 16509
+ neighbor AMAZON description AMAZON
+ neighbor AMAZON ebgp-multihop 255
+ neighbor JKTIX_IPV6 peer-group
+ neighbor JKTIX_IPV6 remote-as 137295
+ neighbor 38.229.6.20 remote-as 65332
+ neighbor 38.229.6.20 peer-group cymru-bogon
+ neighbor 38.229.6.20 description Peering to CYMRU BGP
+ neighbor 38.229.6.20 update-source Loopback0
+ neighbor 38.229.46.20 remote-as 65332
+ neighbor 38.229.46.20 peer-group cymru-bogon
+ neighbor 38.229.46.20 description Peering to CYMRU BGP
+ neighbor 38.229.46.20 update-source Loopback0
+ neighbor 103.6.117.237 remote-as 132164
+ neighbor 103.6.117.237 update-source Loopback0
+ neighbor 103.6.117.238 remote-as 132164
+ neighbor 103.56.234.129 remote-as 131702
+ neighbor 103.56.234.129 description MORATEL-IX
+ neighbor 103.206.244.217 remote-as 131111
+ neighbor 103.206.244.217 description MORATEL
+ neighbor 119.11.184.23 peer-group FACEBOOK
+ neighbor 119.11.184.24 peer-group FACEBOOK
+ neighbor 119.11.184.88 peer-group AMAZON
+ neighbor 119.11.184.101 peer-group JKTIX
+ neighbor 119.11.184.102 peer-group JKTIX
+ neighbor 119.110.117.1 remote-as 55818
+ neighbor 119.110.117.1 description MCIX
+ neighbor 169.254.0.13 peer-group GCP
+ neighbor 172.25.30.6 remote-as 132164
+ neighbor 218.100.41.100 peer-group BIX
+ neighbor 218.100.41.101 peer-group BIX
+  address-family ipv4
+  network 103.6.117.0 mask 255.255.255.0
+  network 103.50.216.0 mask 255.255.255.0
+  network 103.50.217.0 mask 255.255.255.0
+  network 172.16.0.0 mask 255.255.255.0
+  network 172.20.0.0 mask 255.255.255.0
+  neighbor cymru-bogon next-hop-self
+  neighbor cymru-bogon soft-reconfiguration inbound
+  neighbor cymru-bogon prefix-list PRF_CYMRU_OUT out
+  neighbor cymru-bogon route-map RMAP_CYMRUBOGON_IN in
+  neighbor cymru-bogon maximum-prefix 10000 90
+  neighbor ISAT_PRIMARY send-community both
+  neighbor ISAT_PRIMARY next-hop-self
+  neighbor ISAT_PRIMARY soft-reconfiguration inbound
+  neighbor ISAT_PRIMARY distribute-list 181 in
+  neighbor ISAT_PRIMARY distribute-list 180 out
+  neighbor ISAT_PRIMARY route-map RMAP_ISAT_AS24535_PRIMARY_IN in
+  neighbor ISAT_PRIMARY route-map RMAP_ISAT_AS24535_PRIMARY_OUT out
+  neighbor ISAT_SECONDARY send-community both
+  neighbor ISAT_SECONDARY next-hop-self
+  neighbor ISAT_SECONDARY soft-reconfiguration inbound
+  neighbor ISAT_SECONDARY distribute-list 181 in
+  neighbor ISAT_SECONDARY distribute-list 180 out
+  neighbor ISAT_SECONDARY route-map RMAP_ISAT_AS24535_SECONDARY_IN in
+  neighbor ISAT_SECONDARY route-map RMAP_ISAT_AS24535_SECONDARY_OUT out
+  neighbor BIX next-hop-self
+  neighbor BIX soft-reconfiguration inbound
+  neighbor BIX distribute-list 181 in
+  neighbor BIX distribute-list 180 out
+  neighbor BIX route-map BIX_IN in
+  neighbor BIX route-map BIX_OUT out
+  neighbor GCP soft-reconfiguration inbound
+  neighbor GCP route-map GCP_OUT out
+  neighbor JKTIX soft-reconfiguration inbound
+  neighbor JKTIX distribute-list 181 in
+  neighbor JKTIX distribute-list 180 out
+  neighbor JKTIX route-map JKTIX_IN in
+  neighbor JKTIX route-map JKTIX_OUT out
+  neighbor FACEBOOK next-hop-self
+  neighbor FACEBOOK soft-reconfiguration inbound
+  neighbor FACEBOOK route-map FACEBOOK_IN in
+  neighbor FACEBOOK route-map FACEBOOK_OUT out
+  neighbor FACEBOOK maximum-prefix 1000 warning-only
+  neighbor AMAZON next-hop-self
+  neighbor AMAZON soft-reconfiguration inbound
+  neighbor AMAZON route-map AMAZON_IN in
+  neighbor AMAZON route-map AMAZON_OUT out
+  no neighbor 2001:DF0:9E00::1321:64:EE activate
+  no neighbor 2001:DF0:9E00::1321:64:F6 activate
+  no neighbor 2404:C8:0:A:0:13:7295:1 activate
+  no neighbor 2404:C8:0:A:0:13:7295:2 activate
+  no neighbor 2404:C000:4004::5:5818:1 activate
+  neighbor 38.229.6.20 activate
+  neighbor 38.229.46.20 activate
+  neighbor 103.6.117.237 activate
+  neighbor 103.6.117.237 soft-reconfiguration inbound
+  neighbor 103.6.117.238 activate
+  neighbor 103.6.117.238 next-hop-self
+  neighbor 103.6.117.238 soft-reconfiguration inbound
+  neighbor 103.6.117.238 route-map MX_OUT out
+  neighbor 103.56.234.129 activate
+  neighbor 103.56.234.129 next-hop-self
+  neighbor 103.56.234.129 soft-reconfiguration inbound
+  neighbor 103.56.234.129 distribute-list 181 in
+  neighbor 103.56.234.129 distribute-list 180 out
+  neighbor 103.56.234.129 route-map MORATEL_IX_IN in
+  neighbor 103.56.234.129 route-map MORATEL_IX_OUT out
+  neighbor 103.206.244.217 activate
+  neighbor 103.206.244.217 next-hop-self
+  neighbor 103.206.244.217 soft-reconfiguration inbound
+  neighbor 103.206.244.217 distribute-list 181 in
+  neighbor 103.206.244.217 distribute-list 180 out
+  neighbor 103.206.244.217 route-map MORATEL_IN in
+  neighbor 103.206.244.217 route-map MORATEL_OUT out
+  neighbor 119.11.184.23 activate
+  neighbor 119.11.184.24 activate
+  neighbor 119.11.184.88 activate
+  neighbor 119.11.184.101 activate
+  neighbor 119.11.184.102 activate
+  neighbor 119.110.117.1 activate
+  neighbor 119.110.117.1 send-community both
+  neighbor 119.110.117.1 next-hop-self
+  neighbor 119.110.117.1 soft-reconfiguration inbound
+  neighbor 119.110.117.1 distribute-list 180 in
+  neighbor 119.110.117.1 distribute-list 180 out
+  neighbor 119.110.117.1 route-map MCIX_IN in
+  neighbor 119.110.117.1 route-map MCIX_OUT out
+  neighbor 169.254.0.13 activate
+  neighbor 172.25.30.6 activate
+  neighbor 172.25.30.6 send-community both
+  neighbor 172.25.30.6 capability orf prefix-list send
+  neighbor 172.25.30.6 soft-reconfiguration inbound
+  neighbor 172.25.30.6 prefix-list PRF_TO_BLHL_OUT out
+  neighbor 172.25.30.6 route-map RMAP_TO_BLHL_IN in
+  neighbor 218.100.41.100 activate
+  neighbor 218.100.41.101 activate
+ exit-address-family
+ !
+bgp_address_family_modulee
+
