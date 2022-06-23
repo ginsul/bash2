@@ -234,5 +234,5 @@ router bgp 132164
   neighbor 218.100.41.101 activate
  exit-address-family
  !
-bgp_address_family_module
+bgp_address_family_modulee
 
