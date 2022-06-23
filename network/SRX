@@ -20,7 +20,7 @@ applications:
  - name: EEE
    description: deskrip
    protocol: udp
-   destinationport: 8081333333333
+   destinationport: 8081
  - name: EEE2
    description: deskrip2
    protocol: tcp
@@ -28,7 +28,7 @@ applications:
 
 vlans:
  - name: EEEE
-   id: 135
+   id: 134
    description: cobain
  - name: DC1_BM_MGMT
    id: 12
@@ -76,7 +76,7 @@ security_zones:
     interfaces:
        ge-0/0/1.0:
          system:
-         - all
+         - ping
          protocol:
          - all
   UNTRUST:
