@@ -1,0 +1,89 @@
+
+firewall_policies:
+  CPP:
+    FRAGEMENT:
+      from:
+        source_prefix_list:
+          - PREFIX_LOCAL_ENDEUS
+        destination_prefix_list:
+          - PREFIX_LOCAL_ENDEUS
+      then:
+        terminate_action: discard
+
+policy_options:
+  PREFIX_LOCAL_ENDEUS :
+     - 192.168.16.0/24
+  PREFIX_PUBLIC_ENDEUS :
+     - 192.168.16.0/24
+
+applications:
+ - name: EEE
+   description: deskrip
+   protocol: udp
+   destinationport: 8081333333333
+ - name: EEE2
+   description: deskrip2
+   protocol: tcp
+   destinationport: 8082
+
+vlans:
+ - name: EEEE
+   id: 135
+   description: cobain
+ - name: DC1_BM_MGMT
+   id: 12
+
+security_address_book:
+    TRUST:
+        - name: RFC1918_10
+          description: coba
+          ip: 10.0.0.0
+          mask: 8
+        - name: RFC1918_172
+          ip: 172.16.0.0
+          mask: 12
+        - name: RFC1918_192
+          ip: 192.168.0.0
+          mask: 16
+
+security_policies:
+    policies:
+        - name: kekeke
+          dst: any
+          src: any
+          from_zone: UNTRUST
+          to_zone: TRUST
+          application:
+              - junos-https
+              - junos-http
+              - junos-ping
+          terminate_action: permit
+          actions:
+        - name: hayo
+          dst: any
+          src: any
+          from_zone: UNTRUST
+          to_zone: TRUST
+          application:
+              - junos-https
+              - junos-http
+              - junos-ping
+          terminate_action: permit
+          actions:
+
+security_zones:
+  TRUST:
+    interfaces:
+       ge-0/0/1.0:
+         system:
+         - all
+         protocol:
+         - all
+  UNTRUST:
+    interfaces:
+       ge-0/0/2.0:
+         system:
+         - all
+         protocol:
+         - all
+
