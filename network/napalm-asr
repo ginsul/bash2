@@ -161,7 +161,6 @@ ip access-list extended test
  permit ip host 192.0.2.2 any log
  permit ip host 192.0.2.3 any log
  permit ip host 192.0.2.4 any log
- permit ip host 192.0.2.5 any log
 !
 access-list 189 permit ip 103.6.117.0 0.0.0.255 any
 access-list 189 permit ip 103.50.216.0 0.0.0.255 any
