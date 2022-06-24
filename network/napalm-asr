@@ -180,6 +180,7 @@ access-list 190 permit ip host 103.6.117.237 any
 access-list 190 permit ip host 103.6.117.238 any
 access-list 190 permit ip host 103.6.117.240 any
 access-list 190 permit ip host 216.244.87.154 any
+access-list 190 permit ip host 216.244.87.153 any
 access-list 190 deny   ip any any log
 !
 route-map cobaaa permit 10
