@@ -120,6 +120,9 @@ interface Loopback5
 interface Loopback8
  no ip address
 !
+interface Loopback9
+ no ip address
+!
 interface GigabitEthernet1
  ip address 12.12.12.22 255.255.255.0
  negotiation auto
